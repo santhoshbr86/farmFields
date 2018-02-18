@@ -1,0 +1,8 @@
+<div class="jumbotron">
+          <h1>Direct from Farmers</h1>
+          {{childMessage}}
+          <p class="lead">We deliver food grains from farmers to consumer directly</p>
+          <p *ngIf="isAvailable; else cond2"><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+           <ng-template #cond2><p><a class="btn btn-lg btn-success" href="#" role="button">Coming Soon</a></p></ng-template>
+          <button class="btn btn-primary" (click)="sendMessage()">Send Message</button>
+</div>
