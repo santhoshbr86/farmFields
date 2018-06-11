@@ -1,9 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';  
+import { FormsModule } from '@angular/forms';  
 
 import { AppComponent } from './app.component';
 import { DataService, MessageDataService } from './data.service';
+import {CommonService} from './common.service'; 
+import { ProductService } from './product/product.service';
+
 import { ContactComponent } from './contact/contact.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -14,7 +19,8 @@ import { ProductComponent } from './product/product.component';
 import { ServiceComponent } from './service/service.component';
 import { AboutComponent } from './about/about.component';
 import {OfferZoneComponent } from './offer-zone/offer-zone.component';
-import { SignInComponent } from './sign-in/sign-in.component'
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AppRoutingModule } from './app-routing.module';
 import {
   AuthService,
     SocialLoginModule,
@@ -54,52 +60,15 @@ import {
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {
-        path: 'example-path',
-        component: ExampleComponentComponent
-      },
-      {
-        path: 'home',
-        component:HomeComponent
-      },
-      {
-        path:'products',
-        component:ProductComponent
-      },
-      {
-        path:'services',
-        component:ServiceComponent
-      },
-      {
-        path:'offerZone',
-        component:OfferZoneComponent
-      },
-      {
-        path:'about',
-        component:AboutComponent
-      },
-      {
-        path:'contact',
-        component:ContactComponent
-      },
-      // {
-      //   path:'signIn',
-      //   component:SignInComponent
-      // },
-      {
-        path: '', 
-        redirectTo:'/home',
-        pathMatch:'full'
-      }
-    ],
-  { enableTracing: true }
-),
-    
-  ],
+    HttpModule,
+    FormsModule,
+    AppRoutingModule
+   ],
   providers: [
     DataService, 
     MessageDataService,
+    CommonService,
+    ProductService,
     AuthService,
     {
       provide: AuthServiceConfig,

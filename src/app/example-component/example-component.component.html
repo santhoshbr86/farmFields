@@ -1,7 +1,41 @@
-<div class="Container">
-  {{data}}
-</div>
-<p>
-  example-component works!
-</p>
-
+<form #userForm="ngForm"  (ngSubmit)="onSave(userForm,userForm.value)" novalidate>  
+  <p><strong>Add and Updatebadmins here:</strong> "Form" valid? {{userForm.valid}}</p>  
+ <table class="table table-bordered">  
+ <tr>  
+   <td>Form</td>
+    <td>    
+        <input name="id" type="hidden"     [(ngModel)]="id" />  
+        <input name="name" type="text"  required  [(ngModel)]="name" />  
+    </td>  
+    <td><input name="email" required  type="text"   [(ngModel)]="email"  email/></td>  
+    <td><input name="phone"   type="text"   [(ngModel)]="phone" /></td>
+    <td><input name="address" required  type="text"   [(ngModel)]="address" /></td>  
+    <td>  
+      <input class="btn btn-primary" type="submit" value="{{valbutton}}" />  
+    </td>  
+ </tr>
+ </table>  
+</form>   
+  
+<table class="table table-bordered">  
+<thead>
+  <tr>  
+    <th>Id</th>  
+    <th>Name</th>  
+    <th>Email</th> 
+    <th>phone</th>  
+    <th>Address</th>  
+    <th>Edit&Delete</th>  
+  </tr>  
+</thead>
+  <tr *ngFor="let kk of Repdata;let ind = index">  
+    <td>{{ind + 1}}</td>  
+    <td>{{kk.name}}</td>  
+    <td>{{kk.email}}</td>  
+    <td>{{kk.phone}}</td>
+    <td>{{kk.address}}</td>  
+    <td><a href="javascript:void(0);" (click)="edit(kk)" class="btn btn-primary">Edit</a>
+    <a href="javascript:void(0);" (click)="delete(kk._id)" class="btn btn-danger">Delete</a>  </td>  
+  </tr>  
+</table>  
+  
